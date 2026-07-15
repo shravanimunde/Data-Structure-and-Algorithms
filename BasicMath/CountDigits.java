@@ -1,41 +1,34 @@
-/**
- * CountDigits
- * Reads an integer from standard input and prints the number of digits it contains.
- * - Handles negative numbers by using the absolute value.
- * - Special-cases 0 (which has 1 digit).
- *
- * Time complexity: O(d) where d is the number of digits in the input.
- */
+// Program to count the number of digits in a number
+
 import java.util.*;
 
 class CountDigits {
     public static void main(String[] args) {
+
+        // Create Scanner object
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter the number");
 
-        // Read the original number (may be negative)
-        int n = sc.nextInt();
+        System.out.println("Enter the number:");
 
-        // Work with absolute value so negative numbers count correctly
-        int number = Math.abs(n);
+        // Read the number from the user
+        int number = sc.nextInt();
 
-        // Special-case: 0 has one digit
-        if (number == 0) {
-            System.out.println(1);
-            sc.close();
-            return;
-        }
+        // Variable to count the digits
+        int count = 0;
 
-        int counter = 0;
-
-        // Each loop iteration removes one digit from 'number'
+        // Repeat until the number becomes 0
         while (number > 0) {
-            counter++;
-            number = number / 10; // integer division drops the last digit
+
+            // Remove the last digit
+            // Example:
+            // 12345 -> 1234
+            number = number / 10;
+
+            // Increase the digit count by 1
+            count++;
         }
 
-        // Print the total digit count
-        System.out.println(counter);
-        sc.close();
+        // Print the total number of digits
+        System.out.println("Number of digits: " + count);
     }
 }
